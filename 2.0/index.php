@@ -9,19 +9,22 @@
 		require ('funct_bdd.php');
 		createTable();
 		$taches = selectTask();
+		
+		$INFO = "";
 
 		// AJOUT
 		if (isset ($_POST['valider']))
 		{
 			$newTask = $_POST['libTache'];
-			addTask($newTask);
+			$INFO = addTask($newTask);
 		}
 		// SUPPRESSION
 		if (isset ($_POST['id']))
 		{
 		  	$tasksuppr = $_POST['id'];
-			delTask($tasksuppr);
+			$INFO = delTask($tasksuppr);
 		}
+		message($INFO);
 
 	?>
 	<body>

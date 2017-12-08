@@ -14,7 +14,7 @@
         }
         catch(PDOException $e)
         {
-            echo $e->getMessage();
+            $e->getMessage();
         }
         return $bdd;
     };
@@ -37,7 +37,7 @@
         $bdd =connectMysql();
         // Si le champ est vide, lancer une erreur
         if (empty ($newTask))
-                echo $INFO = 'Veuillez renseigner le champ tâche';
+                $INFO = 'Veuillez renseigner le champ tâche';
         else
         {
             // Insertion dans la bdd
@@ -66,14 +66,23 @@
         $stmt->bindParam(':tasksuppr', $tasksuppr);
         if ($stmt->execute())
         {
-            echo $INFO = 'Suppression réussi';
+            $INFO = 'Suppression réussi';
             header('Location: index.php');
         }
         else
         {
-            echo $INFO = 'Erreur lors de la création de la tâche';
+            $INFO = 'Erreur lors de la création de la tâche';
         }
         return $INFO;
     };
+    function message($message){
+        echo $message;
+        if($message =! "")
+        {
+            echo '<script language="Javascript">';
+            echo $message;
+            echo '</script>';
+        }
+    }
 
 ?>

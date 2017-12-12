@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<LINK rel="stylesheet" type="text/css" href="style.css">
-		<meta charset="utf-8">
-	</head>
-
 	<?php
+		require_once 'vendor/autoload.php';
 		// Variables de connection à la BDD
 		$hostname = "localhost";
 		$username = "root";
-		$password = "root";
+		$password = "pwsio";
 		$dbname = "students";
 		$bdd =null;
 
@@ -31,6 +25,13 @@
 		$req = "SELECT * FROM tache ORDER BY id";
 		$taches = $bdd->query($req);
 		
+		$m = new Mustache_Engine(array(
+			'loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/views'),
+		));
+		echo $m->render("liste", array('taches'=> $taches));
+
+
+
 		// AJOUT
 		if (isset ($_POST['valider']))
 		{
@@ -75,35 +76,4 @@
 			{
 			echo $info = 'Erreur lors de la création de la tâche';
 			}
-			
-		
-		  
 		}
-
-	?>
-	<body>
-		<div>
-			<H1>Liste des taches</H1>
-			<ul>
-				<?php  
-					foreach ($taches as $tache) {
-						echo '<form action="index.php" method="post" enctype="multipart/form-data">';
-						echo("<li>");
-						echo $tache["libelle"];
-						echo '<input type="image" action="index.php" src="img/suppr.png" class="img" id="suppr" name="taskSupr" ></input>';
-						echo '<input  type="hidden" name="id"  value="'.$tache["id"].'"></input></form>';
-						echo "</li>";
-					}
-				?>
-			</ul>
-		</div>
-		<div>	
-			<form action="index.php" method="post" enctype="multipart/form-data">
-				<H1>Ajouter</H1>
-				<libelle>Tache : </libelle>
-				<input type="textarea" name="libTache"></input>
-				<input type="submit" name="valider" id="valider" value="Valider">
-			<form>
-		</div>
-	</body>
-</html>

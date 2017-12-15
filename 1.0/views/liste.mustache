@@ -3,7 +3,7 @@
 		<LINK rel="stylesheet" type="text/css" href="style.css">
 		<meta charset="utf-8">
 	</head>
-
+	<script type="text/javascript" src="liste.js" ></script>
     <body>
 		<div>
 			<H1>Liste des taches</H1>
@@ -13,7 +13,7 @@
 				    	<li>
 							{{libelle}}
 							<input type="image" action="index.php" src="img/suppr.png" class="img" id="suppr" name="taskSupr" ></input>
-						 	<input  type="hidden" name="id"  value= {{id}} ></input>
+						 	<input onclick="delTask()" type="hidden" name="id"  value= {{id}} ></input>
 						
 						</li>
 					</form>
@@ -26,9 +26,8 @@
 				<H1>Ajouter</H1>
 				<libelle>Tache : </libelle>
 				<input type="textarea" name="libTache"></input>
-				<input type="submit" name="valider" id="valider" value="Valider" onclick="addTask()">
+				<input onclick="addTask()" type="submit" name="valider" id="valider" value="Valider" onclick="addTask()">
 			<form>
 		</div>
 	</body>
 </html>
-<script type="text/javascript" src="../liste.js" ></script>

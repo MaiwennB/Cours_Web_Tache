@@ -9,7 +9,15 @@
 			<H1>Liste des taches</H1>
 			<ul>
                 {{# taches}}
-				    <li>{{libelle}}</li>
+					<form action="index.php" method="post" enctype="multipart/form-data">
+				    	<li>
+							{{libelle}}
+							<input type="image" action="index.php" src="img/suppr.png" class="img" id="suppr" name="taskSupr" ></input>
+						 	<input  type="hidden" name="id"  value= {{id}} ></input>
+						
+						</li>
+					</form>
+						
                 {{/ taches}}
 			</ul>
 		</div>

@@ -9,10 +9,10 @@
 			<H1>Liste des taches</H1>
 			<ul>
                 {{# taches}}
-					<form action="index.php" method="post" enctype="multipart/form-data">
+					<form method="post" enctype="multipart/form-data">
 				    	<li>
 							{{libelle}}
-							<input type="image" action="index.php" src="img/suppr.png" class="img" id="suppr" name="taskSupr" ></input>
+							<input type="image" action="delTask()" src="img/suppr.png" class="img" id="suppr" name="taskSupr" ></input>
 						 	<input onclick="delTask()" type="hidden" name="id"  value= {{id}} ></input>
 						
 						</li>
@@ -22,11 +22,11 @@
 			</ul>
 		</div>
 		<div>	
-			<form action="index.php" method="post" enctype="multipart/form-data">
+			<form method="post" enctype="multipart/form-data">
 				<H1>Ajouter</H1>
 				<libelle>Tache : </libelle>
-				<input type="textarea" name="libTache"></input>
-				<input onclick="addTask()" type="submit" name="valider" id="valider" value="Valider" onclick="addTask()">
+				<input type="textarea" id="libTache" name="libTache"></input>
+				<input type="submit" name="valider" id="valider" value="Valider" onclick="addTask(libTache.value)">
 			<form>
 		</div>
 	</body>

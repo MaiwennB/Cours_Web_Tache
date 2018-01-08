@@ -27,18 +27,18 @@ function addTask(str) {
         mypostrequest.onreadystatechange=function(){
             if (mypostrequest.readyState==4){
                 if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1){
-                    document.getElementById("result").innerHTML=mypostrequest.responseText
+                    document.getElementById("libTache").value;
                 }
                 else{
                     alert("An error has occured making the request")
                 }
             }
         }
-        var libTache=encodeURIComponent(document.getElementById("libTache").value)
-        var parameters="value="+libTache+"&val="+str
-        mypostrequest.open("POST", "index.php", true)
-        mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-        mypostrequest.send(parameters)
+        var libTache=document.getElementById("libTache").value;
+        var parameters="value="+libTache+"&val="+str;
+        mypostrequest.open("POST", "index.php", false);
+        mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        mypostrequest.send(parameters);
     }
 
 

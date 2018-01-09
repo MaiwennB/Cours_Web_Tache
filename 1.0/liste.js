@@ -9,7 +9,6 @@ function addTask() {
         mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         mypostrequest.send(parameters);
         window.location.reload();
-
 }
 
 function dellTask(dell){

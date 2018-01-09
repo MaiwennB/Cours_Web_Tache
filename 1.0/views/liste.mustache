@@ -2,32 +2,27 @@
 	<head>
 		<LINK rel="stylesheet" type="text/css" href="style.css">
 		<meta charset="utf-8">
+		<script type="text/javascript" src="liste.js" ></script>
 	</head>
-	<script type="text/javascript" src="liste.js" ></script>
+	
     <body>
 		<div>
 			<H1>Liste des taches</H1>
 			<ul>
                 {{# taches}}
-					<form method="post" enctype="multipart/form-data">
 				    	<li>
 							{{libelle}}
-							<input type="image" action="delTask()" src="img/suppr.png" class="img" id="suppr" name="taskSupr" ></input>
-						 	<input onclick="delTask()" type="hidden" name="id"  value= {{id}} ></input>
-						
+						 	<img src="img/suppr.png" class="img" id="{{id}}" onclick="dellTask(this)"></button>
 						</li>
-					</form>
 						
                 {{/ taches}}
 			</ul>
 		</div>
 		<div>	
-			<form method="post" enctype="multipart/form-data">
-				<H1>Ajouter</H1>
-				<libelle>Tache : </libelle>
-				<input type="textarea" id="libTache" name="libTache"></input>
-				<input type="submit" name="valider" id="valider" value="Valider" onclick="addTask(libTache.value)">
-			<form>
+			<H1>Ajouter</H1>
+			<libelle>Tache : </libelle>
+			<input type="textarea" id="libTache" name="libTache"></input>
+			<button id="valider" onclick="addTask()">Valider</button>
 		</div>
 	</body>
 </html>
